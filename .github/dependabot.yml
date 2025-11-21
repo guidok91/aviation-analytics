@@ -15,7 +15,6 @@ updates:
     directories:
       - "/dbt"
       - "/dlt"
-      - "/metabase"
     schedule:
       interval: "monthly"
     groups:

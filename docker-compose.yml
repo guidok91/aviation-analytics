@@ -23,14 +23,3 @@ services:
       - "./dlt:/dlt"
       - "./data:/data"
     command: tail -f /dev/null
-
-  metabase:
-    image: metabase
-    container_name: metabase
-    platform: linux/amd64
-    build:
-      dockerfile: ./metabase/Dockerfile
-    volumes:
-      - "./data:/data"
-    ports:
-      - "3000:3000"
