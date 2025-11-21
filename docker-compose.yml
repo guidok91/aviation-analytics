@@ -11,6 +11,7 @@ services:
     environment:
       - ENV=dev
     command: tail -f /dev/null
+    network_mode: "host"
 
   dlt:
     image: dlt

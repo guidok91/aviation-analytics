@@ -33,8 +33,8 @@ Exit the dlt container and get into the dbt one by running `make docker-it-dbt`.
 ## Data exploration
 Once the models have been run and the data is ready, you can start exploring the data.
 
-### Using the DuckDB console
-Run `make duckdb` to open the DuckDB console.
+### Using the DuckDB UI
+Run `make duckdb-ui` to lauch the DuckDB UI and access it via http://localhost:4213.
 
 Example queries:
 

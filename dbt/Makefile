@@ -13,9 +13,9 @@ deps: # Install deps.
 	pip install --upgrade pip setuptools wheel
 	pip install -r requirements.txt
 
-.PHONY: duckdb
-duckdb: # Run DuckDB console.
-	duckdb /data/aviation.duckdb
+.PHONY: duckdb-ui
+duckdb-ui: # Run DuckDB UI.
+	duckdb /data/aviation.duckdb -ui
 
 .PHONY: lint
 lint: # Run code linter tools.
