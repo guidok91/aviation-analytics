@@ -1,4 +1,4 @@
-FROM python:3.13-slim
+FROM python:3.14-slim
 
 RUN apt-get update -q -y && \
     apt-get install -y unzip curl make git-all sudo && \
