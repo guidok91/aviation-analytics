@@ -8,11 +8,11 @@ docker-up: # Spawn containers.
 
 .PHONY: docker-it-dbt
 docker-it-dbt: # Run an interactive bash console on the dbt container.
-	docker exec -it dbt bash
+	docker exec -it aviation-analytics-dbt bash
 
 .PHONY: docker-it-dlt
 docker-it-dlt: # Run an interactive bash console on the dlt container.
-	docker exec -it dlt bash
+	docker exec -it aviation-analytics-dlt bash
 
 .PHONY: docker-down
 docker-down: # Remove containers.

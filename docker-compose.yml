@@ -1,7 +1,8 @@
 services:
   dbt:
-    image: dbt
-    container_name: dbt
+    image: aviation-analytics-dbt
+    pull_policy: never
+    container_name: aviation-analytics-dbt
     platform: linux/amd64
     build:
       dockerfile: ./dbt/Dockerfile
@@ -14,8 +15,9 @@ services:
     network_mode: "host"
 
   dlt:
-    image: dlt
-    container_name: dlt
+    image: aviation-analytics-dlt
+    pull_policy: never
+    container_name: aviation-analytics-dlt
     platform: linux/amd64
     build:
       dockerfile: ./dlt/Dockerfile
