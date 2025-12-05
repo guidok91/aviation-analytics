@@ -15,7 +15,6 @@ Run `make help` to see available commands together with their description.
 
 ### Spin up Docker containers
 Build and spin up Docker containers needed for the app:
-- `make docker-build`
 - `make docker-up`
 
 Get into the dlt container:
