@@ -13,13 +13,9 @@ dlt-ingest-source-data: # Ingest raw data from the AirLabs API using dlt.
 
 .PHONY: lint
 lint: # Run code linter tools.
-	@{ \
-		ruff check --select "E,F,UP,B,SIM,I"; exit_code=$$?; \
-		ruff check --fix --select "E,F,UP,B,SIM,I"; exit_code=$$((exit_code | $$?)); \
-		ruff format; exit_code=$$((exit_code | $$?)); \
-		mypy .; exit_code=$$((exit_code | $$?)); \
-		exit $$exit_code; \
-	}
+	ruff check
+	ruff format --exit-non-zero-on-format
+	mypy .
 
 .PHONY: clean
 clean: # Clean auxiliary files.
