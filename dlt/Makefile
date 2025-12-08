@@ -13,7 +13,7 @@ dlt-ingest-source-data: # Ingest raw data from the AirLabs API using dlt.
 
 .PHONY: lint
 lint: # Run code linter tools.
-	ruff check --select "E,F,UP,B,SIM,I"
+	ruff check
 	ruff format --exit-non-zero-on-format
 	mypy .
 
