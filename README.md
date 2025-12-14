@@ -17,10 +17,10 @@ Run `make help` to see available commands together with their description.
 Build and spin up Docker containers needed for the app:
 - `make docker-up`
 
+### Ingest source data from AirLabs REST API to DuckDB using dlt
 Get into the dlt container:
 - `make docker-it-dlt`
 
-### Ingest source data from AirLabs REST API to DuckDB using dlt
 For this step we first need to generate an AirLabs API key (see how to on their website), and set the environment variable `AIRLABS_API_KEY`. Then run:
 - `make dlt-ingest-source-data`
 
