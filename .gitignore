@@ -28,7 +28,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-.mypy_cache
+.ty
 .ruff_cache
 
 # PyInstaller
