@@ -15,7 +15,7 @@ dlt-ingest-source-data: # Ingest raw data from the AirLabs API using dlt.
 lint: # Run code linter tools.
 	ruff check
 	ruff format --exit-non-zero-on-format
-	ty check
+	ty check --python $(shell which python)
 
 .PHONY: clean
 clean: # Clean auxiliary files.
