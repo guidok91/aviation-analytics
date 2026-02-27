@@ -3,6 +3,18 @@
 
 Aviation analytics project with [DuckDB](https://duckdb.org/), [dbt](https://docs.getdbt.com/docs/introduction) and [dlt](https://dlthub.com/) using the data from [AirLabs API](https://airlabs.co).
 
+- [Data Architecture](#data-architecture)
+- [Running instructions](#running-instructions)
+  - [Spin up Docker containers](#spin-up-docker-containers)
+  - [Ingest source data from AirLabs REST API to DuckDB using dlt](#ingest-source-data-from-airlabs-rest-api-to-duckdb-using-dlt)
+  - [Run dbt models to transform and curate the data](#run-dbt-models-to-transform-and-curate-the-data)
+- [Data exploration with the DuckDB UI](#data-exploration-with-the-duckdb-ui)
+  - [Countries with the highest number of airports](#countries-with-the-highest-number-of-airports)
+  - [Current number of flights by status](#current-number-of-flights-by-status)
+- [Explore dbt project docs](#explore-dbt-project-docs)
+- [Dependency management](#dependency-management)
+- [CI/CD](#cicd)
+
 ## Data Architecture
 ![data architecture](https://github.com/user-attachments/assets/0c834008-3c91-4227-a950-879684dd9010)
 
