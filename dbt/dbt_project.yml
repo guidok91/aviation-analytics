@@ -16,3 +16,6 @@ models:
     +materialized: incremental
     +incremental_strategy: delete+insert
     +schema: curated
+    +persist_docs:
+      relation: true
+      columns: true
