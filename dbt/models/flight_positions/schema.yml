@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: flight_positions
+    description: "Flight positions fact table (primary key: flight_iata_code + event_timestamp)."
 
     data_tests:
       - dbt_expectations.expect_table_row_count_to_be_between:

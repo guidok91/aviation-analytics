@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: airports
+    description: "Airports dimension table (primary key: iata_code). Latest version per airport is preserved."
 
     data_tests:
       - dbt_expectations.expect_table_row_count_to_be_between:

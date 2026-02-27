@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: airlines
+    description: "Airlines dimension table (primary key: iata_code). Latest version per airline is preserved."
 
     data_tests:
       - dbt_expectations.expect_table_row_count_to_be_between:
