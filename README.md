@@ -80,7 +80,7 @@ ORDER BY
 ![data exploration](https://github.com/user-attachments/assets/a1caa51b-de60-40ed-bdb5-c85857fe299d)
 
 ## Explore dbt project docs
-dbt provides auto-generated documentation for the project. Run `dbt-docs` and access http://localhost:8080.
+dbt provides auto-generated documentation for the project. Run `make dbt-docs` and access http://localhost:8080.
 
 ## Dependency management
 Dependabot is configured to periodically upgrade repo dependencies. See [dependabot.yml](.github/dependabot.yml).

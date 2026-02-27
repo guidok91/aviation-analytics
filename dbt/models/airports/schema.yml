@@ -6,60 +6,71 @@ models:
 
     data_tests:
       - dbt_expectations.expect_table_row_count_to_be_between:
-          min_value: 1
+          arguments:
+            min_value: 1
       - dbt_expectations.expect_table_column_count_to_equal:
-          value: 6
+          arguments:
+            value: 6
 
     columns:
       - name: iata_code
         description: "IATA code of the airport"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
           - dbt_expectations.expect_column_values_to_not_be_null
           - dbt_expectations.expect_column_values_to_be_unique
           - dbt_expectations.expect_column_value_lengths_to_equal:
-              value: 3
+              arguments:
+                value: 3
 
       - name: name
         description: "Name of the airport"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
           - dbt_expectations.expect_column_values_to_not_be_null
 
       - name: latitude
         description: "Latitude of the location of the airport"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: double
+              arguments:
+                column_type: double
           - dbt_expectations.expect_column_values_to_not_be_null
 
       - name: longitude
         description: "Longitude of the location of the airport"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: double
+              arguments:
+                column_type: double
           - dbt_expectations.expect_column_values_to_not_be_null
 
       - name: country_code
         description: "Code of the country of the airport"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
           - dbt_expectations.expect_column_values_to_not_be_null
           - dbt_expectations.expect_column_value_lengths_to_equal:
-              value: 2
+              arguments:
+                value: 2
 
       - name: processed_timestamp
         description: "UTC timestamp indicating when the record was processed"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: timestamp with time zone
+              arguments:
+                column_type: timestamp with time zone
           - dbt_expectations.expect_column_values_to_not_be_null
           - dbt_expectations.expect_row_values_to_have_recent_data:
-              datepart: day
-              interval: 1
+              arguments:
+                datepart: day
+                interval: 1
 
 unit_tests:
   - name: test_airports
