@@ -6,123 +6,145 @@ models:
 
     data_tests:
       - dbt_expectations.expect_table_row_count_to_be_between:
-          min_value: 1
+          arguments:
+            min_value: 1
       - dbt_expectations.expect_table_column_count_to_equal:
-          value: 16
+          arguments:
+            value: 16
 
     columns:
       - name: flight_iata_code
         description: "Flight number IATA code"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
           - dbt_expectations.expect_column_values_to_not_be_null
 
       - name: country_code
         description: "Code of the country of the flight"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
           - dbt_expectations.expect_column_value_lengths_to_equal:
-              value: 2
+              arguments:
+                value: 2
 
       - name: latitude
         description: "Latitude of the position of the flight"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: double
+              arguments:
+                column_type: double
           - dbt_expectations.expect_column_values_to_not_be_null
 
       - name: longitude
         description: "Longitude of the position of the flight"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: double
+              arguments:
+                column_type: double
           - dbt_expectations.expect_column_values_to_not_be_null
 
       - name: altitude_meters
         description: "Altitude of the flight (in meters)"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: bigint
+              arguments:
+                column_type: bigint
 
       - name: speed_horizontal
         description: "Horizontal speed of the flight (in km/h)"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: bigint
+              arguments:
+                column_type: bigint
 
       - name: speed_vertical
         description: "Vertical speed of the flight (in km/h)"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: bigint
+              arguments:
+                column_type: bigint
 
       - name: squawk_signal_code
         description: "Squawk signal code of the flight"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
           - dbt_expectations.expect_column_value_lengths_to_equal:
-              value: 4
+              arguments:
+                value: 4
 
       - name: flight_status
         description: "Flight status"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
           - dbt_expectations.expect_column_values_to_be_in_set:
-              value_set: ['en-route', 'scheduled', 'landed']
+              arguments:
+                value_set: ['en-route', 'scheduled', 'landed']
           - dbt_expectations.expect_column_values_to_not_be_null
 
       - name: airline_iata_code
         description: "Airline IATA code"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
           - dbt_expectations.expect_column_values_to_not_be_null
 
       - name: departure_airport_iata_code
         description: "Departure airport IATA code"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
 
       - name: arrival_airport_iata_code
         description: "Arrival airport IATA code"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
 
       - name: aircraft_registration_number
         description: "Aircraft registration number"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
 
       - name: aircraft_type
         description: "Aircraft type"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: varchar
+              arguments:
+                column_type: varchar
           - dbt_expectations.expect_column_values_to_not_be_null
 
       - name: event_timestamp
         description: "UTC timestamp indicating when the flight position was recorded (when the event occurred)"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: timestamp with time zone
+              arguments:
+                column_type: timestamp with time zone
           - dbt_expectations.expect_column_values_to_not_be_null
 
       - name: processed_timestamp
         description: "UTC timestamp indicating when the record was processed"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: timestamp with time zone
+              arguments:
+                column_type: timestamp with time zone
           - dbt_expectations.expect_column_values_to_not_be_null
           - dbt_expectations.expect_row_values_to_have_recent_data:
-              datepart: day
-              interval: 1
+              arguments:
+                datepart: day
+                interval: 1
 
 unit_tests:
   - name: test_flight_positions

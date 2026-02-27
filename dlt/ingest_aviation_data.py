@@ -3,6 +3,7 @@ import os
 
 import dlt
 from dlt.sources.rest_api import rest_api_source
+from dlt.sources.helpers.rest_client.paginators import SinglePagePaginator
 
 SOURCE_API_KEY = os.environ["AIRLABS_API_KEY"]
 SOURCE_BASE_URL = "https://airlabs.co/api/v9/"
@@ -20,6 +21,7 @@ def load_aviation_data() -> None:
         {
             "client": {
                 "base_url": SOURCE_BASE_URL,
+                "paginator": SinglePagePaginator(),
             },
             "resources": [
                 {

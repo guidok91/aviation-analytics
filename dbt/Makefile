@@ -1,4 +1,4 @@
-export DUCKDB_VERSION=1.4.2
+export DUCKDB_VERSION=1.4.4
 
 .PHONY: help
 help:
