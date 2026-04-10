@@ -6,6 +6,11 @@ concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 env:
   ENV: dev
 
@@ -56,3 +61,34 @@ jobs:
     - name: Run dbt data tests
       working-directory: ./dbt
       run: make dbt-test-data
+
+  serve-dbt-docs:
+    name: Serve dbt docs
+    if: github.ref == 'refs/heads/main'
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: 3.13
+
+    - name: Install dbt dependencies
+      working-directory: ./dbt
+      run: make deps && make dbt-deps
+
+    - name: Generate dbt docs
+      working-directory: ./dbt
+      run: make dbt-docs-generate
+
+    - name: Upload dbt docs as artifact to GitHub Pages
+      uses: actions/upload-pages-artifact@v4
+      with:
+        path: ./dbt/target
+
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4

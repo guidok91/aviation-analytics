@@ -80,12 +80,12 @@ ORDER BY
 ![data exploration](https://github.com/user-attachments/assets/a1caa51b-de60-40ed-bdb5-c85857fe299d)
 
 ## Explore dbt project docs
-dbt provides auto-generated documentation for the project. Run `make dbt-docs` and access http://localhost:8080.
+dbt provides auto-generated documentation for the project which can be accessed on https://guidok91.github.io/aviation-analytics/.
 
 ## Dependency management
 Dependabot is configured to periodically upgrade repo dependencies. See [dependabot.yml](.github/dependabot.yml).
 
 ## CI/CD
-A Github Actions CI/CD pipeline that runs the models, tests and code linting is defined [here](.github/workflows) and can be seen [here](https://github.com/guidok91/duckdb-dbt/actions).
+A Github Actions CI/CD pipeline is defined [here](.github/workflows) and can be seen [here](https://github.com/guidok91/duckdb-dbt/actions).
 
 Note that the `AIRLABS_API_KEY` is provided as a Github repository secret to be used in the CI/CD pipeline.
