@@ -41,10 +41,9 @@ dbt-test-unit: # Run unit tests on dbt models.
 dbt-test-data: # Run data tests on dbt models.
 	dbt test --select "test_type:data"
 
-.PHONY: dbt-docs
-dbt-docs: # Generate and serve dbt docs.
+.PHONY: dbt-docs-generate
+dbt-docs-generate: # Generate dbt docs (to he hosted in Github Pages).
 	dbt docs generate
-	dbt docs serve
 
 .PHONY: clean
 clean: # Clean auxiliary files.
