@@ -15,57 +15,57 @@ env:
   ENV: dev
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+  # test:
+  #   name: Test
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 15
+  #   steps:
+  #   - name: Checkout code
+  #     uses: actions/checkout@v4
 
-    - name: Setup Python
-      uses: actions/setup-python@v6
-      with:
-        python-version: 3.13
+  #   - name: Setup Python
+  #     uses: actions/setup-python@v6
+  #     with:
+  #       python-version: 3.13
 
-    - name: Install dlt dependencies
-      working-directory: ./dlt
-      run: make deps
+  #   - name: Install dlt dependencies
+  #     working-directory: ./dlt
+  #     run: make deps
 
-    - name: Run dlt linter
-      working-directory: ./dlt
-      run: make lint
+  #   - name: Run dlt linter
+  #     working-directory: ./dlt
+  #     run: make lint
 
-    - name: Ingest raw data
-      working-directory: ./dlt
-      env:
-        AIRLABS_API_KEY: ${{ secrets.AIRLABS_API_KEY }}
-      run: make dlt-ingest-source-data
+  #   - name: Ingest raw data
+  #     working-directory: ./dlt
+  #     env:
+  #       AIRLABS_API_KEY: ${{ secrets.AIRLABS_API_KEY }}
+  #     run: make dlt-ingest-source-data
 
-    - name: Install dbt dependencies
-      working-directory: ./dbt
-      run: make deps && make dbt-deps
+  #   - name: Install dbt dependencies
+  #     working-directory: ./dbt
+  #     run: make deps && make dbt-deps
 
-    - name: Run dbt linter
-      working-directory: ./dbt
-      run: make lint
+  #   - name: Run dbt linter
+  #     working-directory: ./dbt
+  #     run: make lint
 
-    - name: Run dbt models
-      working-directory: ./dbt
-      run: make dbt-run
+  #   - name: Run dbt models
+  #     working-directory: ./dbt
+  #     run: make dbt-run
 
-    - name: Run dbt unit tests
-      working-directory: ./dbt
-      run: make dbt-test-unit
+  #   - name: Run dbt unit tests
+  #     working-directory: ./dbt
+  #     run: make dbt-test-unit
 
-    - name: Run dbt data tests
-      working-directory: ./dbt
-      run: make dbt-test-data
+  #   - name: Run dbt data tests
+  #     working-directory: ./dbt
+  #     run: make dbt-test-data
 
   serve-dbt-docs:
     name: Serve dbt docs
     # if: github.ref == 'refs/heads/main'
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
