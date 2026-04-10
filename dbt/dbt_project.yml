@@ -14,7 +14,7 @@ clean-targets:
 models:
   aviation_analytics:
     +materialized: incremental
-    +incremental_strategy: delete+insert
+    +incremental_strategy: merge
     +schema: curated
     +persist_docs:
       relation: true
