@@ -53,7 +53,9 @@ def load_aviation_data() -> None:
 
     load_info = pipeline.run(aviation_source)
     logging.info(load_info)
-    logging.info(f"Loaded row counts: {pipeline.last_trace.last_normalize_info.row_counts}")
+    logging.info(
+        f"Loaded row counts: {pipeline.last_trace.last_normalize_info.row_counts}"
+    )
 
 
 if __name__ == "__main__":
