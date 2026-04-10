@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 15
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Setup Python
       uses: actions/setup-python@v6
@@ -70,7 +70,7 @@ jobs:
     timeout-minutes: 5
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Setup Python
       uses: actions/setup-python@v6
@@ -91,4 +91,4 @@ jobs:
         path: ./dbt/target
 
     - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@v5
