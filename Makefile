@@ -1,6 +1,6 @@
 .PHONY: help
 help:
-	@awk -F ':.*# ' '/^[a-zA-Z_-]+:.*# / {printf "\033[32m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk -F ':.*# ' '/^[a-zA-Z0-9_-]+:.*# / {printf "\033[32m%-35s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 .PHONY: docker-up
 docker-up: # Spawn containers.
