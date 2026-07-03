@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 15
     steps:
     - name: Checkout code
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Setup Python
       uses: actions/setup-python@v6
@@ -70,7 +70,7 @@ jobs:
     timeout-minutes: 5
     steps:
     - name: Checkout code
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Setup Python
       uses: actions/setup-python@v6
@@ -86,7 +86,7 @@ jobs:
       run: make dbt-docs-generate
 
     - name: Upload dbt docs as artifact to GitHub Pages
-      uses: actions/upload-pages-artifact@v4
+      uses: actions/upload-pages-artifact@v5
       with:
         path: ./dbt/target
 
