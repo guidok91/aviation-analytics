@@ -2,10 +2,11 @@ import logging
 import os
 
 import dlt
-from dlt.sources.rest_api import rest_api_source
 from dlt.sources.helpers.rest_client.paginators import SinglePagePaginator
+from dlt.sources.rest_api import rest_api_source
 
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 SOURCE_API_KEY = os.environ["AIRLABS_API_KEY"]
 SOURCE_BASE_URL = "https://airlabs.co/api/v9/"
@@ -52,8 +53,8 @@ def load_aviation_data() -> None:
     )
 
     load_info = pipeline.run(aviation_source)
-    logging.info(load_info)
-    logging.info(
+    logger.info(load_info)
+    logger.info(
         f"Loaded row counts: {pipeline.last_trace.last_normalize_info.row_counts}"
     )
 
