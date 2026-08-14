@@ -5,7 +5,8 @@ Aviation analytics project with [DuckDB](https://duckdb.org/), [dbt](https://doc
 
 - [Data Architecture](#data-architecture)
 - [Running instructions](#running-instructions)
-  - [Spin up Docker containers](#spin-up-docker-containers)
+  - [Set up the AirLabs API key](#set-up-the-airlabs-api-key)
+  - [Spin up the Docker container](#spin-up-the-docker-container)
   - [Ingest source data from AirLabs REST API to DuckDB using dlt](#ingest-source-data-from-airlabs-rest-api-to-duckdb-using-dlt)
   - [Run dbt models to transform and curate the data](#run-dbt-models-to-transform-and-curate-the-data)
 - [Data exploration with the DuckDB UI](#data-exploration-with-the-duckdb-ui)
@@ -25,19 +26,24 @@ This preserves the latest version of each record to keep it simple on the queryi
 ## Running instructions
 Run `make help` to see available commands together with their description.
 
-### Spin up Docker containers
-Build and spin up Docker containers needed for the app:
+### Set up the AirLabs API key
+Generate an AirLabs API key (see how to on their website) and set it as an environment variable:
+- `export AIRLABS_API_KEY=<your-key>`
+
+### Spin up the Docker container
+Build the image (only needed the first time, or when dependencies change):
+- `make docker-build`
+
+Spin up the container and get into it:
 - `make docker-up`
+- `make docker-it`
+
+The dlt and dbt steps below both run inside this container.
 
 ### Ingest source data from AirLabs REST API to DuckDB using dlt
-Get into the dlt container:
-- `make docker-it-dlt`
-
-For this step we first need to generate an AirLabs API key (see how to on their website), and set the environment variable `AIRLABS_API_KEY`. Then run:
 - `make dlt-ingest-source-data`
 
 ### Run dbt models to transform and curate the data
-Exit the dlt container and get into the dbt one by running `make docker-it-dbt`. Then:
 - `make dbt-deps`
 - `make dbt-run`
 

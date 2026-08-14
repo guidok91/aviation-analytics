@@ -7,11 +7,10 @@ RUN apt-get update -q -y && \
     apt-get clean -q -y && \
     apt-get autoclean -q -y && \
     apt-get autoremove -q -y && \
-    git config --global --add safe.directory $PWD
+    git config --global --add safe.directory /app
 
-COPY ./dbt /dbt
-COPY ./data /data
+WORKDIR /app
 
-WORKDIR /dbt
+COPY . /app
 
 RUN make deps

@@ -13,6 +13,7 @@ permissions:
 
 env:
   ENV: dev
+  AIRLABS_API_KEY: ${{ secrets.AIRLABS_API_KEY }}
 
 jobs:
   test:
@@ -28,38 +29,28 @@ jobs:
       with:
         python-version: 3.13
 
-    - name: Install dlt dependencies
-      working-directory: ./dlt
+    - name: Install dependencies
       run: make deps
 
     - name: Run dlt linter
-      working-directory: ./dlt
-      run: make lint
+      run: make dlt-lint
 
     - name: Ingest raw data
-      working-directory: ./dlt
-      env:
-        AIRLABS_API_KEY: ${{ secrets.AIRLABS_API_KEY }}
       run: make dlt-ingest-source-data
 
     - name: Install dbt dependencies
-      working-directory: ./dbt
-      run: make deps && make dbt-deps
+      run: make dbt-deps
 
     - name: Run dbt linter
-      working-directory: ./dbt
-      run: make lint
+      run: make dbt-lint
 
     - name: Run dbt models
-      working-directory: ./dbt
       run: make dbt-run
 
     - name: Run dbt unit tests
-      working-directory: ./dbt
       run: make dbt-test-unit
 
     - name: Run dbt data tests
-      working-directory: ./dbt
       run: make dbt-test-data
 
   serve-dbt-docs:
@@ -78,11 +69,9 @@ jobs:
         python-version: 3.13
 
     - name: Install dbt dependencies
-      working-directory: ./dbt
       run: make deps && make dbt-deps
 
     - name: Generate dbt docs
-      working-directory: ./dbt
       run: make dbt-docs-generate
 
     - name: Upload dbt docs as artifact to GitHub Pages
