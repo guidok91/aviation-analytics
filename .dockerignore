@@ -1,0 +1,29 @@
+.git
+.github
+__pycache__/
+*.py[cod]
+.ty
+.ruff_cache
+.pytest_cache/
+
+# Local envs and editor files
+.env
+.venv
+env/
+ENV/
+.DS_Store
+.idea/
+.vscode
+
+# DuckDB database files
+data/*.duckdb*
+*.wal
+
+# dbt artifacts
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+dbt/.user.yml
+
+# dlt secrets
+secrets.toml

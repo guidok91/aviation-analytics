@@ -136,8 +136,9 @@ poetry.toml
 # VS Code
 .vscode
 
-# DuckDB
+# DuckDB database files
 data/*.duckdb*
+*.wal
 
 # dbt
 dbt/target/
@@ -150,5 +151,3 @@ dbt/core
 # ignore secrets, virtual environments and typical python compilation artifacts
 secrets.toml
 .user.yml
-# ignore duckdb
-*.wal
