@@ -1,4 +1,4 @@
-export DUCKDB_VERSION=1.5.4
+export DUCKDB_VERSION=1.5.5
 export ENV?=dev
 export DOCKER_IMAGE=aviation-analytics
 export DOCKER_CONTAINER=aviation-analytics
