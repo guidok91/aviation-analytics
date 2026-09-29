@@ -65,7 +65,7 @@ models:
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
               arguments:
-                column_type: timestamp with time zone
+                column_type: datetime
           - dbt_expectations.expect_column_values_to_not_be_null
           - dbt_expectations.expect_row_values_to_have_recent_data:
               arguments:

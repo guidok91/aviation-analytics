@@ -49,11 +49,7 @@ dbt-deps: # Install dbt deps (packages).
 
 .PHONY: dbt-lint
 dbt-lint: # Run linter tools on the dbt code.
-	@cd dbt && { \
-		sqlfluff lint --dialect duckdb; exit_code=$$?; \
-		sqlfluff fix --dialect duckdb; exit_code=$$?; \
-		exit $$exit_code; \
-	}
+	cd dbt && dbt lint --warn-error --fix
 
 .PHONY: dbt-run
 dbt-run: # Run dbt models.
