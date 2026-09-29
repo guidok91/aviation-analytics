@@ -15,7 +15,7 @@ FROM
 WHERE
     iata_code IS NOT NULL
     AND _dlt_load_id::decimal = (
-        SELECT MAX(_dlt_load_id::decimal) -- noqa: disable=RF02
+        SELECT MAX(_dlt_load_id::decimal)
         FROM
             {{ source('raw', 'airports') }}
     )
