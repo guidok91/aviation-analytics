@@ -1,5 +1,4 @@
-dbt-duckdb~=1.11.0
-sqlfluff-templater-dbt~=4.3.0
+dbt~=2.0.6
 dlt[duckdb]~=1.30.0
 ruff~=0.16.9
 ty~=0.0.84

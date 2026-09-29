@@ -27,7 +27,7 @@ WHERE
     AND latitude IS NOT NULL
     AND longitude IS NOT NULL
     AND _dlt_load_id::decimal = (
-        SELECT MAX(_dlt_load_id::decimal) -- noqa: disable=RF02
+        SELECT MAX(_dlt_load_id::decimal)
         FROM
             {{ source('raw', 'flight_positions') }}
     )
