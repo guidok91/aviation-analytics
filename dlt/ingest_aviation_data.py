@@ -55,7 +55,7 @@ def load_aviation_data() -> None:
     load_info = pipeline.run(aviation_source)
     logger.info(load_info)
     logger.info(
-        f"Loaded row counts: {pipeline.last_trace.last_normalize_info.row_counts}"
+        f"Loaded row counts: {pipeline.last_trace.last_normalize_info.row_counts}"  # ty: ignore[unresolved-attribute]
     )
 
 
