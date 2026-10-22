@@ -1,4 +1,3 @@
-export DUCKDB_VERSION=1.5.5
 export ENV?=dev
 export DOCKER_IMAGE=aviation-analytics
 export DOCKER_CONTAINER=aviation-analytics
@@ -8,13 +7,12 @@ help:
 	@awk -F ':.*# ' '/^[a-zA-Z0-9_-]+:.*# / {printf "\033[32m%-35s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 .PHONY: deps
-deps: # Install deps (DuckDB CLI + Python packages).
-	curl -LO https://github.com/duckdb/duckdb/releases/download/v$(DUCKDB_VERSION)/duckdb_cli-linux-amd64.zip
-	unzip duckdb_cli-linux-amd64.zip
-	sudo mv duckdb /usr/bin
-	rm duckdb_cli-linux-amd64.zip
+deps: # Install deps.
 	pip install --upgrade pip setuptools wheel
 	pip install -r requirements.txt
+	# Make dbt use pip's DuckDB.
+	sudo ln -sf "$$(python -c 'import _duckdb; print(_duckdb.__file__)')" /usr/local/lib/libduckdb.so
+	sudo ldconfig
 
 .PHONY: docker-build
 docker-build: # Build the Docker image.
@@ -69,9 +67,8 @@ dbt-docs-generate: # Generate dbt docs (to be hosted in Github Pages).
 
 .PHONY: duckdb-ui
 duckdb-ui: # Run DuckDB UI.
-	duckdb data/aviation.duckdb -ui
+	python -ic "import duckdb; con = duckdb.connect('data/aviation.duckdb'); con.sql('CALL start_ui_server()')"
 
 .PHONY: clean
 clean: # Clean auxiliary files.
-	cd dbt && dbt clean
-	rm -rf dbt/logs dbt/.user.yml dlt/.ty dlt/.ruff_cache data/*.duckdb
+	rm -rf dbt/dbt_packages dbt/logs dbt/target dbt/.user.yml dlt/.ty dlt/.ruff_cache data/*.duckdb
