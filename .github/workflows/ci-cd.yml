@@ -1,15 +1,17 @@
 name: CI/CD
 
-on: push
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
 
 concurrency:
-  group: ${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }} - ${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 env:
   ENV: dev
@@ -55,10 +57,14 @@ jobs:
 
   serve-dbt-docs:
     name: Serve dbt docs
-    if: github.ref == 'refs/heads/main'
+    if: github.event_name == 'push'
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
     - name: Checkout code
       uses: actions/checkout@v7
