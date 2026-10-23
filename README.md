@@ -1,5 +1,5 @@
 # Aviation analytics with DuckDB, dbt and dlt using AirLabs data
-![workflow](https://github.com/guidok91/duckdb-dbt/actions/workflows/ci-cd.yml/badge.svg)
+![workflow](https://github.com/guidok91/aviation-analytics/actions/workflows/ci-cd.yml/badge.svg?event=push)
 
 Aviation analytics project with [DuckDB](https://duckdb.org/), [dbt](https://docs.getdbt.com/docs/introduction) and [dlt](https://dlthub.com/) using the data from [AirLabs API](https://airlabs.co).
 
@@ -92,6 +92,6 @@ dbt provides auto-generated documentation for the project which can be accessed 
 Dependabot is configured to periodically upgrade repo dependencies. See [dependabot.yml](.github/dependabot.yml).
 
 ## CI/CD
-A Github Actions CI/CD pipeline is defined [here](.github/workflows) and can be seen [here](https://github.com/guidok91/duckdb-dbt/actions).
+A Github Actions CI/CD pipeline is defined [here](.github/workflows) and can be seen [here](https://github.com/guidok91/aviation-analytics/actions).
 
 Note that the `AIRLABS_API_KEY` is provided as a Github repository secret to be used in the CI/CD pipeline.
