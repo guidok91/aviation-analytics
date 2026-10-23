@@ -6,7 +6,68 @@ sources:
     tables:
       - name: airlines
         description: Dataset containing airlines data.
+        columns:
+          - name: iata_code
+            data_type: varchar
+          - name: name
+            data_type: varchar
+          - name: _dlt_load_id
+            data_type: varchar
+          - name: _dlt_id
+            data_type: varchar
+
       - name: airports
         description: Dataset containing airports data.
+        columns:
+          - name: iata_code
+            data_type: varchar
+          - name: name
+            data_type: varchar
+          - name: lat
+            data_type: double
+          - name: lng
+            data_type: double
+          - name: country_code
+            data_type: varchar
+          - name: _dlt_load_id
+            data_type: varchar
+          - name: _dlt_id
+            data_type: varchar
+
       - name: flight_positions
         description: Dataset containing flight positions data (events).
+        columns:
+          - name: flight_iata
+            data_type: varchar
+          - name: flag
+            data_type: varchar
+          - name: lat
+            data_type: double
+          - name: lng
+            data_type: double
+          - name: alt
+            data_type: bigint
+          - name: speed
+            data_type: bigint
+          - name: v_speed
+            data_type: bigint
+          - name: squawk
+            data_type: varchar
+          - name: status
+            data_type: varchar
+          - name: airline_iata
+            data_type: varchar
+          - name: dep_iata
+            data_type: varchar
+          - name: arr_iata
+            data_type: varchar
+          - name: reg_number
+            data_type: varchar
+          - name: type
+            data_type: varchar
+          - name: updated
+            data_type: bigint
+          - name: _dlt_load_id
+            data_type: varchar
+          - name: _dlt_id
+            data_type: varchar

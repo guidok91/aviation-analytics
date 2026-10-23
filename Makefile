@@ -55,6 +55,7 @@ dbt-run: # Run dbt models.
 
 .PHONY: dbt-test-unit
 dbt-test-unit: # Run unit tests on dbt models.
+	cd dbt && dbt run --empty
 	cd dbt && dbt test --select "test_type:unit"
 
 .PHONY: dbt-test-data
@@ -64,6 +65,10 @@ dbt-test-data: # Run data tests on dbt models.
 .PHONY: dbt-docs-generate
 dbt-docs-generate: # Generate dbt docs (to be hosted in Github Pages).
 	cd dbt && dbt docs generate
+
+.PHONY: duckdb-create-source-tables
+duckdb-create-source-tables: # Create the source tables in DuckDB.
+	cd dbt && dbt run-operation create_source_tables
 
 .PHONY: duckdb-ui
 duckdb-ui: # Run DuckDB UI.

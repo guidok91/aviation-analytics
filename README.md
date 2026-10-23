@@ -93,5 +93,3 @@ Dependabot is configured to periodically upgrade repo dependencies. See [dependa
 
 ## CI/CD
 A Github Actions CI/CD pipeline is defined [here](.github/workflows) and can be seen [here](https://github.com/guidok91/aviation-analytics/actions).
-
-Note that the `AIRLABS_API_KEY` is provided as a Github repository secret to be used in the CI/CD pipeline.

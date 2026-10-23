@@ -15,7 +15,6 @@ permissions:
 
 env:
   ENV: dev
-  AIRLABS_API_KEY: ${{ secrets.AIRLABS_API_KEY }}
 
 jobs:
   test:
@@ -37,23 +36,17 @@ jobs:
     - name: Run dlt linter
       run: make dlt-lint
 
-    - name: Ingest raw data
-      run: make dlt-ingest-source-data
-
     - name: Install dbt dependencies
       run: make dbt-deps
+
+    - name: Create source tables
+      run: make duckdb-create-source-tables
 
     - name: Run dbt linter
       run: make dbt-lint
 
-    - name: Run dbt models
-      run: make dbt-run
-
     - name: Run dbt unit tests
       run: make dbt-test-unit
-
-    - name: Run dbt data tests
-      run: make dbt-test-data
 
   serve-dbt-docs:
     name: Serve dbt docs
