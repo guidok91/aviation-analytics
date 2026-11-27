@@ -83,7 +83,7 @@ ORDER BY
     COUNT(*) DESC;
 ```
 
-![data exploration](https://github.com/user-attachments/assets/a1caa51b-de60-40ed-bdb5-c85857fe299d)
+![data exploration](docs/data_exploration.png)
 
 ## Explore dbt project docs
 dbt provides auto-generated documentation for the project which can be accessed on https://guidok91.github.io/aviation-analytics/.
